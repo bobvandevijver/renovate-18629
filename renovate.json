@@ -1,0 +1,89 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+        "config:base",
+        ":automergeDisabled",
+        ":disableDevDependencies",
+        ":labels(Maintenance,RenovateBot)"
+    ],
+    "dependencyDashboard": true,
+    "dependencyDashboardLabels": ["Maintenance", "RenovateBot"],
+    "commitMessagePrefix": "[RenovateBot]",
+    "composerIgnorePlatformReqs": [
+        "ext-apcu",
+        "ext-decimal",
+        "ext-imap",
+        "ext-intl",
+        "ext-pdo",
+        "ext-sodium",
+        "ext-zip"
+    ],
+    "internalChecksFilter": "strict",
+    "lockFileMaintenance": {
+      "enabled": true,
+      "rebaseWhen": "auto"
+    },
+    "platformAutomerge": true,
+    "postUpdateOptions": [
+        "yarnDedupeFewer"
+    ],
+    "prConcurrentLimit": 0,
+    "prHourlyLimit": 10,
+    "rangeStrategy": "pin",
+    "rebaseWhen": "never",
+    "stabilityDays": 7,
+    "timezone": "Europe/Amsterdam",
+    "packageRules": [
+        {
+            "matchPackageNames": ["php"],
+            "rangeStrategy": "replace"
+        },
+        {
+            "matchPackagePatterns": ["^drenso/", "^@drenso/"],
+            "rebaseWhen": "conflicted",
+            "stabilityDays": 0
+        },
+        {
+            "matchPackagePrefixes": ["symfony/"],
+            "groupName": "Symfony packages",
+            "groupSlug": "symfony",
+            "excludePackagePatterns": "-contracts$",
+            "excludePackageNames": [
+                "symfony/maker-bundle",
+                "symfony/webpack-encore-bundle"
+            ],
+            "stabilityDays": 0
+        },
+        {
+            "matchPackagePatterns": ["^@types/"],
+            "automerge": true,
+            "rebaseWhen": "auto",
+            "stabilityDays": 0
+        },
+        {
+            "matchPackagePatterns": ["^jms/serializer"],
+            "groupName": "JMS serializer packages",
+            "groupSlug": "jms-serializer"
+        },
+        {
+            "matchPackagePatterns": ["^datatables.net"],
+            "groupName": "DataTables packages",
+            "groupSlug": "datatables"
+        },
+        {
+            "matchPackagePatterns": ["^@messageformat/*"],
+            "groupName": "Messageformat packages",
+            "groupSlug": "messageformat"
+        }, 
+        {
+            "matchPackageNames": ["autoprefixer", "browserslist", "postcss"],
+            "groupName": "CSS processing dependencies",
+            "groupSlug": "css-dependencies"
+        }
+    ],
+  "ignorePaths": [
+    "**/vendor/**"
+  ],
+  "ignoreScripts": false
+}
+
