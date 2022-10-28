@@ -21,7 +21,8 @@
     "internalChecksFilter": "strict",
     "lockFileMaintenance": {
       "enabled": true,
-      "rebaseWhen": "auto"
+      "rebaseWhen": "auto",
+      "schedule": "at any time"
     },
     "platformAutomerge": true,
     "postUpdateOptions": [
